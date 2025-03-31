@@ -16,5 +16,14 @@
 
             ExecutarRobo("SEGUNDO");
         }
+
+        static void ExecutarRobo(string nomeRobo)
+        {
+            Console.Write($"Informe os valores do tamanho do {nomeRobo} Grid (X espaço Y): ");
+            string[] grid = Console.ReadLine()!.Split(' ');
+            int limiteX = int.Parse(grid[0]);
+            int limiteY = int.Parse(grid[1]);
+
+        }
     }
 }
