@@ -4,7 +4,17 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            Console.Clear();
+            Console.WriteLine("---------------------------------------------");
+            Console.WriteLine("Robo Tupiniquim - Missão Marte");
+            Console.WriteLine("---------------------------------------------");
+
+            ExecutarRobo("PRIMEIRO");
+
+            Console.WriteLine("Pressione ENTER para iniciar o SEGUNDO robô...");
+            Console.ReadLine();
+
+            ExecutarRobo("SEGUNDO");
         }
     }
 }
