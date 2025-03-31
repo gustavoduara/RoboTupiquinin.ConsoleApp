@@ -8,6 +8,7 @@
             Console.WriteLine("---------------------------------------------");
             Console.WriteLine("Robo Tupiniquim - Missão Marte");
             Console.WriteLine("---------------------------------------------");
+
             do
             {
                 ExecutarRobo("PRIMEIRO");
@@ -17,7 +18,6 @@
 
                 ExecutarRobo("SEGUNDO");
 
-                Console.Clear();
                 Console.WriteLine("Deseja continuar? (S para Sim, N para Não): ");
                 string resposta = Console.ReadLine().ToUpper();
 
@@ -27,35 +27,36 @@
                 }
                 else
                 {
-                    Console.Clear();
+                    Console.Clear(); 
+                    Console.WriteLine("Reiniciando...");
                 }
 
-            } while (true);
+            } while (true); 
         }
 
         static void ExecutarRobo(string nomeRobo)
         {
             Console.Write($"Informe os valores do tamanho do {nomeRobo} Grid (X espaço Y): ");
-            string[] grid = Console.ReadLine()!.Split(' ');
+            string[] grid = Console.ReadLine().Split(' ');
             int limiteX = int.Parse(grid[0]);
             int limiteY = int.Parse(grid[1]);
 
             Console.WriteLine($"Informe a posição inicial do {nomeRobo} Robô no grid (X e Y) e o sentido que ele está: (ex: N,S,L, ou O):  ");
-            string[] posicoes = Console.ReadLine()!.Split(' ');
+            string[] posicoes = Console.ReadLine().Split(' ');
             int posicaoX = int.Parse(posicoes[0]);
             int posicaoY = int.Parse(posicoes[1]);
             char direcao = char.Parse(posicoes[2]);
 
             Console.WriteLine($"Informe os comandos que o {nomeRobo} Robô deve executar:(Ex:EMEMEMEMM) ");
-            char[] instrucoes = Console.ReadLine()!.ToCharArray();
+            char[] instrucoes = Console.ReadLine().ToCharArray();
 
-            (posicaoX, posicaoY, direcao) = MoverRobo(posicaoX, posicaoY, direcao, instrucoes);
+            (posicaoX, posicaoY, direcao) = MoverRobo(posicaoX, posicaoY, direcao, instrucoes, limiteX, limiteY);
 
             Console.WriteLine($"{posicaoX} {posicaoY} {direcao}");
             Console.ReadLine();
         }
 
-        static (int, int, char) MoverRobo(int x, int y, char direcao, char[] instrucoes)
+        static (int, int, char) MoverRobo(int x, int y, char direcao, char[] instrucoes, int limiteX, int limiteY)
         {
             foreach (char instrucao in instrucoes)
             {
@@ -69,6 +70,12 @@
                         break;
                     case 'M':
                         (x, y) = Movimentar(x, y, direcao);
+
+                        if (x < 0 || y < 0 || x > limiteX || y > limiteY)
+                        {
+                            Console.WriteLine("O robô saiu do grid!");
+                            return (x, y, direcao);
+                        }
                         break;
                 }
             }
