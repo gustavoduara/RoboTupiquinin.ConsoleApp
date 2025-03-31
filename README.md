@@ -1,5 +1,7 @@
 # RoboTupiquinim
 
+![](https://i.imgur.com/3H9lZUR.gif)
+
 ## Introdução
 
 O projeto robo Tupiquinim é um sistema que simula a movimentação de um robo em um grid sendo que o usuario pode comandar atraves de comandos simples para onde quer que ele se movimente.
