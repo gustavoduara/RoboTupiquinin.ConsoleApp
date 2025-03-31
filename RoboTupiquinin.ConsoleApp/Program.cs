@@ -8,13 +8,29 @@
             Console.WriteLine("---------------------------------------------");
             Console.WriteLine("Robo Tupiniquim - Missão Marte");
             Console.WriteLine("---------------------------------------------");
+            do
+            {
+                ExecutarRobo("PRIMEIRO");
 
-            ExecutarRobo("PRIMEIRO");
+                Console.WriteLine("Pressione ENTER para iniciar o SEGUNDO robô...");
+                Console.ReadLine();
 
-            Console.WriteLine("Pressione ENTER para iniciar o SEGUNDO robô...");
-            Console.ReadLine();
+                ExecutarRobo("SEGUNDO");
 
-            ExecutarRobo("SEGUNDO");
+                Console.Clear();
+                Console.WriteLine("Deseja continuar? (S para Sim, N para Não): ");
+                string resposta = Console.ReadLine().ToUpper();
+
+                if (resposta != "S")
+                {
+                    break;
+                }
+                else
+                {
+                    Console.Clear();
+                }
+
+            } while (true);
         }
 
         static void ExecutarRobo(string nomeRobo)
